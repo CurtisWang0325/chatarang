@@ -3,32 +3,30 @@ import React, { Component } from 'react'
 import ChatHeader from './ChatHeader'
 import MessageList from './MessageList'
 import MessageForm from './MessageForm'
+import base from './base'
 
 class Chat extends Component {
   constructor() {
     super()
 
     this.state = {
-      messages: [
-        {
-          id: 1,
-          userName: 'stephen',
-          body: 'cool',
-        },
-        {
-          id: 2,
-          userName: 'dpalazzo',
-          body: 'This guy is so annoying. I hate my job.',
-        },
-      ]
+      messages: []
     }
+  }
+
+  componentDidMount() {
+    base.syncState('messages', {
+      context: this,
+      state: 'messages',
+      asArray: true,
+    })
   }
 
   addMessage = (body) => {
     const messages = [...this.state.messages]
     messages.push({
       id: Date.now(),
-      userName: this.props.user.userName,
+      user: this.props.user,
       body,
     })
 
@@ -47,10 +45,9 @@ class Chat extends Component {
 }
 
 const styles = {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+}
 
-        flex: "1",
-        display: "flex",
-        flexDirection: "column"
-
-    }
 export default Chat

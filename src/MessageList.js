@@ -4,34 +4,36 @@ import Message from './Message'
 
 const MessageList = (props) => {
   return (
-    <div className="MessageList" style={styles.MessageListClass}>
+    <div className="MessageList" style={styles.list}>
+      <div className="roomAnnouncement" style={styles.announcement}>
+        <h3 style={styles.h3}>#general</h3>
+        <p>This is the very beginning of the #general room.</p>
+      </div>
+
       {
         props.messages.map(msg => (
-          <Message key={msg.id} message={msg}
-          style={styles.MessageListRoomAnnouncementClass} />
+          <Message key={msg.id} message={msg} />
         ))
       }
     </div>
   )
 }
 
-var styles = {
+const styles = {
+  list: {
+    backgroundColor: 'white',
+    flex: 1,
+    paddingBottom: '1rem',
+    overflowY: 'scroll',
+  },
 
-    //.MessageList
-        MessageListClass: {
-                backgroundColor: "white",
-                flex: "1",
-                paddingBottom: "1rem",
-                overflowY: "scroll"
-        },
-    //.MessageList .roomAnnouncement
-        MessageListRoomAnnouncementClass: {
-                padding: "2rem 1rem"
-        },
-    //.MessageList .roomAnnouncement h3
-        MessageListRoomAnnouncementh3Class: {
-                fontSize: "1.5rem"
-        }
-    }
+  announcement: {
+    padding: '2rem 1rem',
+  },
+
+  h3: {
+    fontSize: '1.5rem',
+  },
+}
 
 export default MessageList
