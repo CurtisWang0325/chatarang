@@ -4,10 +4,11 @@ import Message from './Message'
 
 const MessageList = (props) => {
   return (
-    <div className="MessageList" style={styles}>
+    <div className="MessageList" style={styles.MessageListClass}>
       {
         props.messages.map(msg => (
-          <Message key={msg.id} message={msg} />
+          <Message key={msg.id} message={msg}
+          style={styles.MessageListRoomAnnouncementClass} />
         ))
       }
     </div>
@@ -17,7 +18,7 @@ const MessageList = (props) => {
 var styles = {
 
     //.MessageList
-        MessageList: {
+        MessageListClass: {
                 backgroundColor: "white",
                 flex: "1",
                 paddingBottom: "1rem",

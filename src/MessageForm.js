@@ -8,6 +8,7 @@ class MessageForm extends Component {
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.addMessage(this.state.body)
+    this.setState({body:''})
   }
 
   handleChange = (ev) => {
@@ -17,7 +18,7 @@ class MessageForm extends Component {
   render() {
     return (
       <form 
-        style={styles}
+        style={styles.MessageForm}
         className="MessageForm"
         onSubmit={this.handleSubmit}
       >
@@ -27,8 +28,12 @@ class MessageForm extends Component {
           placeholder="Type a message..."
           value={this.state.body}
           onChange={this.handleChange}
+          autoFocus
+          style={styles.MessageForminputClass}
         />
-        <button type="submit">Send</button>
+        <button type="submit"
+        style={styles.MessageFormbuttonClass}
+        >Send</button>
       </form>
     )
   }
